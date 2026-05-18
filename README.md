@@ -17,6 +17,8 @@ Our method derives feedback from world-model foresight to perform state-level pl
 To handle challenging scenarios, we further introduce conditional world-aware adaptation, which enables model-level correction by selectively updating the world model at test time when feedback indicates model capacity insufficiency.
 The framework is built on Habitat-Sim and is evaluated on popular VLN-CE benchmarks (R2R-CE and RxR-CE).
 
+![image](figures/sc-wm-intro.svg)
+
 ## Project Structure
 
 ```
