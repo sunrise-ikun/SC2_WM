@@ -1,8 +1,10 @@
 # SC²-WM
 
-**Self-Correcting Spatial Cognition with World Models for Vision-and-Language Navigation in Continuous Environments**
+**SC²-WM: A Self-Correcting World Model with Closed-Loop Feedback for Vision-and-Language Navigation in Continuous Environments**
 
-*Accepted at ICML 2026*
+Xuan Yao, Yuze Zhu, Junyu Gao, Zongmeng Wang, Changsheng Xu
+
+*Accepted at the 43rd International Conference on Machine Learning (ICML 2026)*
 
 [[Paper]](TODO_PAPER_LINK) [[Project Page]](TODO_PROJECT_PAGE)
 
@@ -220,10 +222,10 @@ Selected SC²-WM-specific arguments:
 ## Citation
 
 ```bibtex
-@inproceedings{sc2wm2026,
-    title     = {Self-Correcting Spatial Cognition with World Models for Vision-and-Language Navigation in Continuous Environments},
-    author    = {TODO_AUTHORS},
-    booktitle = {Proceedings of the International Conference on Machine Learning (ICML)},
+@inproceedings{yao2026sc2wm,
+    title     = {{$SC^2$-WM}: A Self-Correcting World Model with Closed-Loop Feedback for Vision-and-Language Navigation in Continuous Environments},
+    author    = {Yao, Xuan and Zhu, Yuze and Gao, Junyu and Wang, Zongmeng and Xu, Changsheng},
+    booktitle = {Proceedings of the 43rd International Conference on Machine Learning (ICML)},
     year      = {2026}
 }
 ```
