@@ -4,7 +4,7 @@
 
 
 
-*🎉 Accepted at the 43rd International Conference on Machine Learning [ICML'26]*
+*🎉 Accepted at the 43rd International Conference on Machine Learning (ICML 2026)*
 
 ---
 
