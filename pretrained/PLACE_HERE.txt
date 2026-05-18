@@ -1,0 +1,17 @@
+# pretrained/
+
+Place the **R2R-CE pretrained backbone weights** and **auxiliary modules**
+here. The exact filenames must be preserved — they are referenced from the
+trainer / config code.
+
+Expected files:
+
+    pretrained/
+    ├── model_step_100000.pt       # VLN-BERT (R2R)            -> MODEL.pretrained_path (R2R)
+    ├── model_step_82500.pt        # VLN-BERT (R2R, default)   -> default in run_r2r/iter_train.yaml
+    ├── segm.pt                    # image segmentation model  -> vlnce_baselines/ss_trainer_ETP.py
+    ├── cwp_predictor.pth          # CWP waypoint predictor    -> vlnce_baselines/ss_trainer_ETP.py
+    ├── NeRF_p16_8x8.pth           # NeRF rendering module     -> vlnce_baselines/ss_trainer_ETP.py
+    └── resnet18-f37072fd.pth      # ResNet-18 backbone        -> vlnce_baselines/waypoint_networks/resnetUnet.py
+
+Download from the project Google Drive release (link in top-level README.md).

@@ -1,0 +1,17 @@
+# data/wp_pred/
+
+(Optional, legacy) cache directory for the original VLN-CE waypoint predictor.
+
+The default SC²-WM trainer (`SS-ETP`, registered in
+`vlnce_baselines/ss_trainer_ETP.py`) replaces the legacy waypoint predictor
+with a `ResNetUNet` initialized inside `_initialize_policy()`, so this
+directory is **not required** for the released training / eval / inference
+pipeline. It is only consulted by the legacy `BaseVLNCETrainer` parent class
+(`vlnce_baselines/common/base_il_trainer.py`) and the `dagger` trainer, which
+expect:
+
+    data/wp_pred/
+    └── check_val_best_avg_wayscore
+
+You can leave this folder empty unless you intend to revive the legacy
+trainer.

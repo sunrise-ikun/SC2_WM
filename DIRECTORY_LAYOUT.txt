@@ -1,0 +1,102 @@
+SC²-WM — DIRECTORY LAYOUT
+=========================
+
+This document gives a complete map of where every file is expected to live
+after you have downloaded all required assets. Code/scripts in the repository
+read paths relative to the project root, so launch all training / eval /
+inference commands from this directory.
+
+Top-level layout
+----------------
+
+    SC2-WM/                              <-- run all commands from here
+    ├── README.md
+    ├── LICENSE
+    ├── DIRECTORY_LAYOUT.txt             (this file)
+    ├── environment.yaml                 conda environment spec
+    ├── run.py                           unified entry point (train / eval / inference)
+    │
+    ├── bert_config/                     [DOWNLOAD] tokenizers & HF configs
+    │   ├── bert-base-uncased/           used for R2R
+    │   └── xlm-roberta-base/            used for RxR
+    │
+    ├── data/                            [DOWNLOAD + RUNTIME] external assets & logs
+    │   ├── ViT-B-16.pt                  CLIP ViT-B/16 weights
+    │   ├── ddppo-models/                DDPPO depth encoder
+    │   ├── scene_datasets/              Matterport3D meshes (gated)
+    │   ├── datasets/                    R2R-CE / RxR-CE episodes
+    │   ├── checkpoints/                 released SC²-WM checkpoints
+    │   ├── wp_pred/                     legacy waypoint cache (optional)
+    │   ├── memory_banks/                runtime memory bank cache
+    │   └── logs/                        runtime: tb, eval, video, ckpts
+    │
+    ├── pretrained/                      [DOWNLOAD] R2R backbone & aux modules
+    │   ├── model_step_100000.pt
+    │   ├── model_step_82500.pt
+    │   ├── segm.pt
+    │   ├── cwp_predictor.pth
+    │   ├── NeRF_p16_8x8.pth
+    │   └── resnet18-f37072fd.pth
+    │
+    ├── rxr_pretrained/                  [DOWNLOAD] RxR backbone & init ckpt
+    │   ├── ckpt.iter31100.pth
+    │   └── mlm.sap_rxr/ckpts/
+    │       └── model_step_90000.pt
+    │
+    ├── habitat_extensions/              Habitat task / sensor / sim extensions
+    │   └── config/
+    │       ├── default.py
+    │       └── __init__.py
+    │
+    ├── run_r2r/                         R2R-CE configs and launch script
+    │   ├── main.bash                    `bash run_r2r/main.bash {train|eval|infer}`
+    │   ├── iter_train.yaml              experiment config
+    │   └── r2r_vlnce.yaml               task config (referenced by iter_train)
+    │
+    ├── run_rxr/                         RxR-CE configs and launch script
+    │   ├── main.bash                    `bash run_rxr/main.bash {train|eval|infer}`
+    │   ├── iter_train.yaml
+    │   └── rxr_vlnce.yaml
+    │
+    ├── utils_p/                         memory module, prompt, losses, metrics
+    │   ├── vln_memory.py                SC²-WM memory bank
+    │   ├── prompt.py                    self-correcting prompt construction
+    │   ├── losses.py
+    │   ├── metrics.py
+    │   └── convert.py
+    │
+    └── vlnce_baselines/                 core model + trainers
+        ├── ss_trainer_ETP.py            **main trainer (TRAINER_NAME=SS-ETP)**
+        ├── dagger_trainer.py            legacy DAgger trainer (kept for parity)
+        ├── utils.py
+        ├── config/
+        │   └── default.py               default config + path defaults
+        ├── models/                      Policy_ViewSelection_ETP, encoders, ETP, NeRF
+        ├── common/                      base trainer, environments, aux losses
+        └── waypoint_networks/           ResNetUNet waypoint / occupancy / segm heads
+
+Path-to-file index
+------------------
+
+| Path                                                           | What lives here                | Referenced by                                                |
+|----------------------------------------------------------------|--------------------------------|--------------------------------------------------------------|
+| data/ViT-B-16.pt                                               | CLIP ViT-B/16 weights          | vlnce_baselines/models/encoders/resnet_encoders.py           |
+| data/ddppo-models/gibson-2plus-resnet50.pth                    | Depth encoder (DDPPO)          | vlnce_baselines/config/default.py                            |
+| data/scene_datasets/mp3d/                                      | Matterport3D meshes            | run_r2r/r2r_vlnce.yaml, run_rxr/rxr_vlnce.yaml               |
+| data/datasets/R2R_VLNCE_v1-2_preprocessed_BERTidx/...          | R2R-CE episodes                | run_r2r/r2r_vlnce.yaml                                       |
+| data/datasets/RxR_VLNCE_v0_enc_xlmr/...                        | RxR-CE episodes                | run_rxr/rxr_vlnce.yaml                                       |
+| data/checkpoints/ckpt.46600.pth                                | R2R fine-tuned model           | run_r2r/main.bash (eval / infer / resume)                    |
+| data/checkpoints/ckpt.45600.pth                                | RxR fine-tuned model           | run_rxr/main.bash (eval / infer)                             |
+| pretrained/model_step_100000.pt                                | VLN-BERT (R2R)                 | run_r2r/main.bash (MODEL.pretrained_path)                    |
+| pretrained/model_step_82500.pt                                 | VLN-BERT default               | run_r2r/iter_train.yaml                                      |
+| pretrained/segm.pt                                             | Image segmenter                | vlnce_baselines/ss_trainer_ETP.py                            |
+| pretrained/cwp_predictor.pth                                   | CWP waypoint predictor         | vlnce_baselines/ss_trainer_ETP.py                            |
+| pretrained/NeRF_p16_8x8.pth                                    | NeRF rendering module          | vlnce_baselines/ss_trainer_ETP.py                            |
+| pretrained/resnet18-f37072fd.pth                               | ResNet-18 backbone             | vlnce_baselines/waypoint_networks/resnetUnet.py              |
+| rxr_pretrained/ckpt.iter31100.pth                              | RxR init checkpoint            | run_rxr/main.bash (IL.ckpt_to_load)                          |
+| rxr_pretrained/mlm.sap_rxr/ckpts/model_step_90000.pt           | XLM-R VLN-BERT (RxR)           | run_rxr/main.bash, run_rxr/iter_train.yaml                   |
+| bert_config/bert-base-uncased/                                 | BERT tokenizer + config        | vlnce_baselines/models/etp/vlnbert_init.py                   |
+| bert_config/xlm-roberta-base/                                  | XLM-R tokenizer + config       | vlnce_baselines/models/etp/vlnbert_init.py                   |
+
+Each downloadable directory also contains a local `PLACE_HERE.txt` describing
+its specific contents.

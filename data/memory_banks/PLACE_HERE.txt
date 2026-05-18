@@ -1,0 +1,5 @@
+# data/memory_banks/
+
+Runtime cache for the SC²-WM memory module (`utils_p/vln_memory.py`). The
+directory is reserved for serialized memory banks produced during training or
+evaluation. Nothing needs to be downloaded into this folder before first run.

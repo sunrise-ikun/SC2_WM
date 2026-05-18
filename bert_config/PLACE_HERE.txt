@@ -1,0 +1,20 @@
+# bert_config/
+
+Configs and tokenizer files for the language encoders used by the VLN-BERT
+backbone. The names must match — they are referenced by
+`vlnce_baselines/models/etp/vlnbert_init.py`.
+
+Expected layout:
+
+    bert_config/
+    ├── bert-base-uncased/             # used for R2R-CE (English-only)
+    │   ├── config.json
+    │   └── vocab.txt
+    └── xlm-roberta-base/              # used for RxR-CE (multilingual)
+        ├── config.json
+        ├── tokenizer.json             # (or sentencepiece.bpe.model + tokenizer_config.json)
+        └── ... (any extra HuggingFace artefacts)
+
+Download from HuggingFace:
+  - https://huggingface.co/bert-base-uncased
+  - https://huggingface.co/xlm-roberta-base

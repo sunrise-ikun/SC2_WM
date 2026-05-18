@@ -1,0 +1,34 @@
+# data/datasets/
+
+Place the **R2R-CE** and **RxR-CE** episode files here.
+
+Expected layout:
+
+    data/datasets/
+    ├── R2R_VLNCE_v1-2_preprocessed_BERTidx/
+    │   ├── train/
+    │   │   ├── train_bertidx.json.gz
+    │   │   └── train_gt.json.gz
+    │   ├── val_seen/
+    │   │   ├── val_seen_bertidx.json.gz
+    │   │   └── val_seen_gt.json.gz
+    │   └── val_unseen/
+    │       ├── val_unseen_bertidx.json.gz
+    │       └── val_unseen_gt.json.gz
+    └── RxR_VLNCE_v0_enc_xlmr/
+        ├── train/
+        │   ├── train_guide.json.gz
+        │   └── train_guide_gt.json.gz
+        ├── val_seen/
+        │   ├── val_seen_guide.json.gz
+        │   └── val_seen_guide_gt.json.gz
+        └── val_unseen/
+            ├── val_unseen_guide.json.gz
+            └── val_unseen_guide_gt.json.gz
+
+Sources:
+  - R2R-CE      : https://github.com/jacobkrantz/VLN-CE
+  - RxR-CE      : https://github.com/jacobkrantz/VLN-CE
+  - BERT-idx /
+    XLM-R-enc   : provided in the project Google Drive release (see top-level
+                  README.md).

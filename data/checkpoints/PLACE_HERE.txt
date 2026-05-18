@@ -1,0 +1,18 @@
+# data/checkpoints/
+
+Place the **released SC²-WM model weights** here. File names should remain
+exactly as shipped — the eval / inference scripts reference them by name.
+
+Expected files:
+
+    data/checkpoints/
+    ├── ckpt.46600.pth   # R2R-CE fine-tuned checkpoint  (used by run_r2r/main.bash)
+    └── ckpt.45600.pth   # RxR-CE fine-tuned checkpoint  (used by run_rxr/main.bash)
+
+Download from the project release (Google Drive link in top-level README.md).
+
+Note: this directory is also the **public publish location** for trained
+checkpoints. During training, intermediate checkpoints are written to
+`data/logs/checkpoints/<exp_name>/` (governed by `CHECKPOINT_FOLDER` in
+`run_r2r/iter_train.yaml` / `run_rxr/iter_train.yaml`). Move the chosen
+checkpoint into this directory before evaluation.

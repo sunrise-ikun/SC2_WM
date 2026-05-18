@@ -1,0 +1,16 @@
+# rxr_pretrained/
+
+Place the **RxR-CE pretrained / initial-iteration weights** here. Filenames
+must be preserved.
+
+Expected layout:
+
+    rxr_pretrained/
+    ├── ckpt.iter31100.pth                       # RxR initial training ckpt
+    │                                            #   -> IL.ckpt_to_load (RxR train)
+    └── mlm.sap_rxr/
+        └── ckpts/
+            └── model_step_90000.pt              # XLM-R / VLN-BERT for RxR
+                                                 #   -> MODEL.pretrained_path (RxR)
+
+Download from the project Google Drive release (link in top-level README.md).

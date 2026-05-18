@@ -1,0 +1,13 @@
+# data/ddppo-models/
+
+Place the **DDPPO-pretrained depth encoder** here. It is referenced by
+`MODEL.DEPTH_ENCODER.ddppo_checkpoint` in
+`vlnce_baselines/config/default.py`.
+
+Expected file:
+
+    data/ddppo-models/
+    └── gibson-2plus-resnet50.pth
+
+Source: https://github.com/facebookresearch/habitat-lab (DDPPO point-nav
+pretrained models) or the project Google Drive release.

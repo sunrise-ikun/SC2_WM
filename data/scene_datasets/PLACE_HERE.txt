@@ -1,0 +1,20 @@
+# data/scene_datasets/
+
+Place the **Matterport3D (MP3D)** scene meshes here. Access requires signing
+the Matterport3D Terms of Use:
+
+    https://niessner.github.io/Matterport/
+
+Expected layout:
+
+    data/scene_datasets/
+    └── mp3d/
+        ├── 17DRP5sb8fy/
+        ├── 1LXtFkjw3qL/
+        ├── ...
+        └── zsNo4HB9uLZ/
+
+Each scene directory contains the `.glb`/`.navmesh` files used by Habitat-Sim.
+The path is referenced by `SCENES_DIR` in:
+  - run_r2r/r2r_vlnce.yaml
+  - run_rxr/rxr_vlnce.yaml

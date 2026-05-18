@@ -1,0 +1,27 @@
+# data/
+
+This directory holds **all external assets** required to train, evaluate, and
+run inference with SC²-WM. None of these files are tracked in git; please
+download them from the project's release page (see top-level README.md for
+the Google Drive link).
+
+Expected layout:
+
+    data/
+    ├── ViT-B-16.pt                        # CLIP ViT-B/16 weights
+    ├── ViT-B-32.pt                        # (optional) CLIP ViT-B/32 weights
+    ├── ddppo-models/
+    │   └── gibson-2plus-resnet50.pth      # DDPPO depth encoder
+    ├── scene_datasets/
+    │   └── mp3d/                          # Matterport3D meshes (gated)
+    ├── datasets/
+    │   ├── R2R_VLNCE_v1-2_preprocessed_BERTidx/
+    │   └── RxR_VLNCE_v0_enc_xlmr/
+    ├── checkpoints/
+    │   ├── ckpt.46600.pth                 # R2R fine-tuned model
+    │   └── ckpt.45600.pth                 # RxR fine-tuned model
+    ├── wp_pred/                           # (optional) legacy waypoint predictor cache
+    ├── memory_banks/                      # runtime: serialized memory banks
+    └── logs/                              # runtime: tensorboard, eval, video, ckpt outputs
+
+See the per-subdirectory PLACE_HERE.txt for details on each asset.

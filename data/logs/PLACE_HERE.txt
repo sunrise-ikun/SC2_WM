@@ -1,0 +1,18 @@
+# data/logs/
+
+Runtime output directory. Created/populated automatically during training and
+evaluation. Nothing needs to be downloaded into this folder.
+
+Sub-directories created at runtime:
+
+    data/logs/
+    ├── checkpoints/<exp_name>/        # iterative training checkpoints
+    ├── tensorboard_dirs/<exp_name>/   # tensorboard event files
+    ├── eval_results/<exp_name>/       # evaluation metrics dumps
+    ├── video/<exp_name>/              # rendered episode videos (if enabled)
+    └── running_log/<exp_name>_*.log   # text logs from `habitat.logger`
+
+Paths are configured by `TENSORBOARD_DIR`, `CHECKPOINT_FOLDER`, `RESULTS_DIR`,
+and `VIDEO_DIR` in:
+  - run_r2r/iter_train.yaml
+  - run_rxr/iter_train.yaml
