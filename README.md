@@ -6,8 +6,6 @@ Xuan Yao, Yuze Zhu, Junyu Gao, Zongmeng Wang, Changsheng Xu
 
 *Accepted at the 43rd International Conference on Machine Learning (ICML 2026)*
 
-[[Paper]](TODO_PAPER_LINK) [[Project Page]](TODO_PROJECT_PAGE)
-
 ---
 
 ## Overview
