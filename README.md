@@ -1,21 +1,21 @@
-# SC²-WM
+# SC²-WM: A Self-Correcting World Model with Closed-Loop Feedback for Vision-and-Language Navigation in Continuous Environments
 
-**SC²-WM: A Self-Correcting World Model with Closed-Loop Feedback for Vision-and-Language Navigation in Continuous Environments**
+**Xuan Yao, Yuze Zhu, Junyu Gao, Zongmeng Wang, Changsheng Xu**
 
-Xuan Yao, Yuze Zhu, Junyu Gao, Zongmeng Wang, Changsheng Xu
 
-*Accepted at the 43rd International Conference on Machine Learning (ICML 2026)*
+
+*🎉 Accepted at the 43rd International Conference on Machine Learning (ICML 2026)*
 
 ---
 
 ## Overview
 
-SC²-WM is a framework for Vision-and-Language Navigation in Continuous
-Environments (VLN-CE). The agent uses a **world model** to mentally imagine
-future panoramic observations, and a **self-correcting spatial cognition**
-mechanism to reconcile its imagined and observed views before committing to
-a navigation decision. The framework is built on Habitat-Sim and is
-evaluated on both R2R-CE and RxR-CE.
+Vision-and-Language Navigation in Continuous Environments (VLN-CE) requires agents to make fine-grained navigation decisions under partial observability.
+However, most existing methods rely on open-loop execution, lacking mechanisms to detect and correct internal state drift during inference.
+We propose SC²-WM, **a self-correcting world model framework that introduces internal feedback for closed-loop decision making** in VLN-CE.
+Our method derives feedback from world-model foresight to perform state-level plan refinement before action execution.
+To handle challenging scenarios, we further introduce conditional world-aware adaptation, which enables model-level correction by selectively updating the world model at test time when feedback indicates model capacity insufficiency.
+The framework is built on Habitat-Sim and is evaluated on popular VLN-CE benchmarks (R2R-CE and RxR-CE).
 
 ## Project Structure
 
@@ -205,20 +205,23 @@ Selected SC²-WM-specific arguments:
 
 ### R2R-CE (val_unseen)
 
-| Method        | SR | SPL | nDTW |
-|---------------|----|-----|------|
-| SC²-WM (Ours) | —  | —   | —    |
+| Method              |   SR   |   SPL  |   NE ↓ |
+|---------------------|--------|--------|--------|
+| **SC²-WM (Ours)**   |**50.9**|**37.2**|**5.37**|
+| Baseline (VLN-3DFF) |  44.9  |  30.4  |  5.95  |
 
 ### RxR-CE (val_unseen)
 
-| Method        | SR | SPL | nDTW |
-|---------------|----|-----|------|
-| SC²-WM (Ours) | —  | —   | —    |
+| Method              |   SR   |   SPL  |   NE ↓ |
+|---------------------|--------|--------|--------|
+| **SC²-WM (Ours)**   |**35.8**|**27.2**|**8.36**|
+| Baseline (VLN-3DFF) |  25.5  |  18.1  |  8.79  |
 
 > See the paper for the complete set of results.
 
 ## Citation
 
+If you find this project useful in your research, please consider cite:
 ```bibtex
 @inproceedings{yao2026sc2wm,
     title     = {{$SC^2$-WM}: A Self-Correcting World Model with Closed-Loop Feedback for Vision-and-Language Navigation in Continuous Environments},
@@ -234,8 +237,6 @@ Our code is built on top of several excellent open-source projects:
 
 - [VLN-CE](https://github.com/jacobkrantz/VLN-CE)
 - [Habitat-Lab](https://github.com/facebookresearch/habitat-lab)
-- [CLIP](https://github.com/openai/CLIP)
-- [tiny-cuda-nn](https://github.com/NVlabs/tiny-cuda-nn)
 
 We thank the authors of these projects for releasing their code.
 
