@@ -209,15 +209,17 @@ Selected SC²-WM-specific arguments:
 
 | Method              |   SR   |   SPL  |   NE ↓ |
 |---------------------|--------|--------|--------|
-| **SC²-WM (Ours)**   |**50.9**|**37.2**|**5.37**|
 | Baseline (VLN-3DFF) |  44.9  |  30.4  |  5.95  |
+| **SC²-WM (Ours)**   |**50.9**|**37.2**|**5.37**|
+
 
 ### RxR-CE (val_unseen)
 
 | Method              |   SR   |   SPL  |   NE ↓ |
 |---------------------|--------|--------|--------|
-| **SC²-WM (Ours)**   |**35.8**|**27.2**|**8.36**|
 | Baseline (VLN-3DFF) |  25.5  |  18.1  |  8.79  |
+| **SC²-WM (Ours)**   |**35.8**|**27.2**|**8.36**|
+
 
 > See the paper for the complete set of results.
 
